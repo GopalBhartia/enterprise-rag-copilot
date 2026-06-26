@@ -1,0 +1,5 @@
+{"trace_id": "966179e7-9352-48b4-87cb-88b4f47fbf29", "query": "How does FastAPI handle startup and shutdown?", "rating": "down", "timestamp": "2026-06-26T11:27:10.672743"}
+{"trace_id": "5f6db00b-f459-4cec-aedf-516796e3ad51", "query": "What is FastAPI?", "rating": "up", "timestamp": "2026-06-26T11:35:40.946634"}
+{"trace_id": "3415e72c-b339-4581-ab29-1fe5ee41b0a8", "query": "What is a Docker container?", "rating": "up", "timestamp": "2026-06-26T11:47:01.594996"}
+{"trace_id": "60452140-3939-4025-ab2c-c23bb908ce21", "query": "What is Pydantic validation?", "rating": "up", "timestamp": "2026-06-26T11:50:15.525134"}
+{"trace_id": "e8a29502-58df-4192-b633-b640b1d917ee", "query": "How does FastAPI handle startup and shutdown?", "rating": "down", "timestamp": "2026-06-26T11:50:56.818017"}
