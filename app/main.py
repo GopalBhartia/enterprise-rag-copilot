@@ -17,13 +17,7 @@ async def lifespan(app: FastAPI):
     # -----------------------------
     try:
         if logger:
-            logger.info("🚀 Starting Enterprise RAG Copilot API")
-
-        # 🔥 AUTO INGESTION (CRITICAL ADDITION)
-        run_ingestion_if_needed()
-
-        if logger:
-            logger.info("✅ Startup complete - system ready")
+            logger.info("Startup complete (ingestion disabled in production)")
 
     except Exception as e:
         if logger:
