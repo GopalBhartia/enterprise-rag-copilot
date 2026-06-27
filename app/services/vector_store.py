@@ -4,13 +4,21 @@ import os
 import uuid
 
 # ----------------------------
+
 # Config
+
 # ----------------------------
 
-QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+QDRANT_URL = os.getenv("QDRANT_URL", "http://qdrant:6333")
+
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+
 COLLECTION_NAME = "rag_chunks"
 
-client = QdrantClient(url=QDRANT_URL)
+client = QdrantClient(
+    url=QDRANT_URL,
+    api_key=QDRANT_API_KEY,
+)
 
 MIN_SCORE = 0.30
 
