@@ -1,0 +1,222 @@
+[
+  {
+    "question": "What is FastAPI?",
+    "expected_answer": "FastAPI is a modern Python web framework for building APIs using type hints.",
+    "expected_source": "fastapi/overview.md",
+    "generated_answer": "FastAPI is a modern, high-performance Python web framework designed for building APIs and backend services. It is built on top of Starlette for web functionality and Pydantic for data validation, making it easy to learn, fast to develop with, and efficient in production environments. FastAPI is widely used for REST APIs, AI and machine learning services, microservices, enterprise applications, and backend web systems [0][2]. \n\nKey features include automatic request validation, a dependency injection system, automatic OpenAPI and Swagger documentation, async support, type hint integration, high performance, and built-in security and authentication support [0].",
+    "citations": [
+      {
+        "index": 0,
+        "source": "fastapi/overview.md",
+        "score": 0.75995064
+      },
+      {
+        "index": 1,
+        "source": "fastapi/security.md",
+        "score": 0.618631
+      },
+      {
+        "index": 2,
+        "source": "fastapi/overview.md",
+        "score": 0.68749404
+      },
+      {
+        "index": 3,
+        "source": "fastapi/routing.md",
+        "score": 0.59804034
+      },
+      {
+        "index": 4,
+        "source": "fastapi/dependencies.md",
+        "score": 0.5892138
+      }
+    ],
+    "contexts": [
+      {
+        "id": 0,
+        "text": "# FastAPI Overview\n\nFastAPI is a modern, high-performance Python web framework for building APIs and backend services.\n\nIt is designed to be easy to learn, fast to develop with, and highly efficient in production environments. FastAPI is built on top of Starlette for web functionality and Pydantic for data validation.\n\nFastAPI is widely used for REST APIs, AI and machine learning services, microservices, enterprise applications, and backend web systems.\n\n## Key Features\n\nFastAPI provides several powerful features out of the box:\n\n- Automatic request validation using Pydantic\n- Dependency injection system\n- Automatic OpenAPI and Swagger documentation\n- Async and await support using ASGI\n- Type hint integration\n- High performance comparable to Node.js and Go services\n- Built-in security and authentication support\n\n## Why FastAPI Is Popular\n\nFastAPI reduces boilerplate code while maintaining strong type safety and excellent developer experience.\n\nDevelopers can build APIs quickly while benefiting from:\n\n- Automatic documentation\n- Automatic validation\n- Clear error messages\n- Modern Python features\n- High runtime performance\n\n## Basic Example\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Hello World\"}\n```\n\nIn this example, FastAPI creates a simple API endpoint that responds to HTTP GET requests.\n\n## Core Concepts\n\nSome of the most important FastAPI concepts include:\n\n### Routing",
+        "source": "fastapi/overview.md",
+        "score": 0.75995064
+      },
+      {
+        "id": 1,
+        "text": "# FastAPI Security\n\nSecurity is a critical aspect of API development. FastAPI provides built-in tools and integrations for implementing authentication, authorization, and access control.\n\nFastAPI supports modern security standards including OAuth2, JWT tokens, API keys, and HTTP authentication.\n\n## Authentication vs Authorization\n\nAuthentication verifies who a user is.\n\nAuthorization determines what a user is allowed to access.\n\nA secure API typically requires both authentication and authorization.\n\n## OAuth2 Authentication\n\nOAuth2 is one of the most common authentication mechanisms used in modern APIs.\n\nFastAPI provides utilities for implementing OAuth2 workflows.\n\n### Example\n\n```python\nfrom fastapi.security import OAuth2PasswordBearer\n\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n```\n\nThe `OAuth2PasswordBearer` dependency extracts access tokens from incoming requests.\n\n## Using Security Dependencies\n\nSecurity components are often injected using FastAPI's dependency injection system.\n\n### Example\n\n```python\nfrom fastapi import Depends\n\n@app.get(\"/profile\")\ndef get_profile(token: str = Depends(oauth2_scheme)):\n    return {\"token\": token}\n```\n\nFastAPI automatically validates and provides the authentication token.\n\n## API Key Authentication\n\nFastAPI also supports API key authentication.\n\nAPI keys are commonly used for:\n\n- Internal services\n- Third-party integrations\n- Service-to-service communication\n\n## JWT Tokens\n\nJSON Web Tokens (JWTs) are frequently used with OAuth2.\n\nJWT tokens typically contain:\n\n- User identity\n- Permissions\n- Expiration information",
+        "source": "fastapi/security.md",
+        "score": 0.618631
+      },
+      {
+        "id": 2,
+        "text": "\"Hello World\"}\n```\n\nIn this example, FastAPI creates a simple API endpoint that responds to HTTP GET requests.\n\n## Core Concepts\n\nSome of the most important FastAPI concepts include:\n\n### Routing\n\nRoutes define the URLs that users can access and the logic that handles incoming requests.\n\n### Dependency Injection\n\nDependencies allow reusable components such as database connections, authentication services, and configuration objects to be shared across the application.\n\n### Request Validation\n\nFastAPI automatically validates incoming request data using Pydantic models.\n\n### Lifecycle Management\n\nApplications can perform startup and shutdown tasks using lifespan events.\n\n### Security\n\nFastAPI includes built-in support for OAuth2, JWT authentication, API keys, and other security mechanisms.\n\n## Common Use Cases\n\nFastAPI is commonly used for:\n\n- REST APIs\n- AI and machine learning services\n- Retrieval-Augmented Generation (RAG) systems\n- Microservices\n- Internal enterprise platforms\n- Backend web applications\n- Data processing services\n\n## Benefits\n\nOrganizations choose FastAPI because it provides:\n\n- Fast development speed\n- High performance\n- Excellent documentation\n- Strong type safety\n- Easy testing\n- Scalability for production workloads\n\nFastAPI is one of the most popular modern Python frameworks for building reliable and maintainable APIs.",
+        "source": "fastapi/overview.md",
+        "score": 0.68749404
+      },
+      {
+        "id": 3,
+        "text": "# FastAPI Routing\n\nRouting is the process of mapping incoming HTTP requests to specific functions in an application.\n\nIn FastAPI, routes define the URLs that users or applications can access and the logic that should execute when those URLs are requested.\n\nRouting is one of the core building blocks of any API.\n\n## Defining Routes\n\nFastAPI uses decorators such as `@app.get()`, `@app.post()`, `@app.put()`, and `@app.delete()` to define routes.\n\n### Example\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/users\")\ndef get_users():\n    return {\"users\": []}\n```\n\nIn this example, a GET request to `/users` will execute the `get_users()` function.\n\n## HTTP Methods\n\nFastAPI supports common HTTP methods:\n\n- GET \u2014 retrieve data\n- POST \u2014 create data\n- PUT \u2014 update data\n- PATCH \u2014 partially update data\n- DELETE \u2014 remove data\n\n## Path Parameters\n\nRoutes can accept path parameters.\n\n### Example\n\n```python\n@app.get(\"/users/{user_id}\")\ndef get_user(user_id: int):\n    return {\"user_id\": user_id}\n```\n\nHere, FastAPI extracts the value from the URL and validates its type.\n\n## Query Parameters\n\nRoutes can also accept query parameters.\n\n### Example\n\n```python\n@app.get(\"/search\")\ndef search(q: str):\n    return {\"query\": q}\n```\n\nRequest:",
+        "source": "fastapi/routing.md",
+        "score": 0.59804034
+      },
+      {
+        "id": 4,
+        "text": "Cases\n\nFastAPI dependency injection is commonly used for:\n\n- Database sessions\n- Authentication and authorization\n- Configuration management\n- Logging services\n- External API clients\n- Shared business services\n\n## Benefits\n\nDependency injection makes FastAPI applications easier to test because dependencies can be replaced with mock implementations during testing.\n\nIt also improves application architecture by keeping route handlers focused on business logic rather than resource creation and lifecycle management.",
+        "source": "fastapi/dependencies.md",
+        "score": 0.5892138
+      }
+    ],
+    "trace_id": "4197aec2-9246-44bc-8b3c-b53801ff9191"
+  },
+  {
+    "question": "What is dependency injection in FastAPI?",
+    "expected_answer": "Dependency injection allows FastAPI to automatically provide dependencies to path operations.",
+    "expected_source": "fastapi/dependencies.md",
+    "generated_answer": "Dependency injection in FastAPI is a software design pattern that allows dependencies to be provided to a component instead of being created directly inside it. It is used to share reusable components such as database connections, authentication services, configuration objects, API clients, and business services across multiple routes. This approach improves code reusability, separation of concerns, maintainability, testability, and consistency across the application [0].\n\nFastAPI uses the `Depends()` function to declare dependencies, which are typically functions that provide resources or services to route handlers. For example, a dependency can create a database connection and ensure it is properly closed after the request is completed [0].",
+    "citations": [
+      {
+        "index": 0,
+        "source": "fastapi/dependencies.md",
+        "score": 0.76529384
+      },
+      {
+        "index": 1,
+        "source": "fastapi/dependencies.md",
+        "score": 0.7650634
+      },
+      {
+        "index": 2,
+        "source": "fastapi/overview.md",
+        "score": 0.52752864
+      },
+      {
+        "index": 3,
+        "source": "fastapi/overview.md",
+        "score": 0.5685271
+      },
+      {
+        "index": 4,
+        "source": "fastapi/security.md",
+        "score": 0.5925947
+      }
+    ],
+    "contexts": [
+      {
+        "id": 0,
+        "text": "# FastAPI Dependency Injection\n\nDependency injection is a software design pattern that allows dependencies to be provided to a component instead of being created directly inside it.\n\nIn FastAPI, dependency injection is used to share reusable components such as database connections, authentication services, configuration objects, API clients, and business services across multiple routes.\n\nUsing dependency injection helps improve:\n\n- Code reusability\n- Separation of concerns\n- Maintainability\n- Testability\n- Consistency across the application\n\n## How Dependency Injection Works\n\nFastAPI uses the `Depends()` function to declare dependencies.\n\nA dependency is typically a function that provides a resource or service to a route handler.\n\n## Example Dependency\n\n```python\ndef get_db():\n    db = Database()\n    try:\n        yield db\n    finally:\n        db.close()\n```\n\nThis dependency creates a database connection and ensures that the connection is properly closed after the request is completed.\n\n## Using Depends()\n\n```python\nfrom fastapi import Depends\n\n@app.get(\"/users\")\ndef get_users(db=Depends(get_db)):\n    return db.get_all_users()\n```\n\nIn this example, FastAPI automatically executes the `get_db()` dependency and injects the database connection into the route handler.\n\n## Common Dependency Injection Use Cases\n\nFastAPI dependency injection is commonly used for:\n\n- Database sessions\n- Authentication and authorization\n- Configuration management\n- Logging services\n- External API clients\n- Shared business services\n\n## Benefits",
+        "source": "fastapi/dependencies.md",
+        "score": 0.76529384
+      },
+      {
+        "id": 1,
+        "text": "Cases\n\nFastAPI dependency injection is commonly used for:\n\n- Database sessions\n- Authentication and authorization\n- Configuration management\n- Logging services\n- External API clients\n- Shared business services\n\n## Benefits\n\nDependency injection makes FastAPI applications easier to test because dependencies can be replaced with mock implementations during testing.\n\nIt also improves application architecture by keeping route handlers focused on business logic rather than resource creation and lifecycle management.",
+        "source": "fastapi/dependencies.md",
+        "score": 0.7650634
+      },
+      {
+        "id": 2,
+        "text": "\"Hello World\"}\n```\n\nIn this example, FastAPI creates a simple API endpoint that responds to HTTP GET requests.\n\n## Core Concepts\n\nSome of the most important FastAPI concepts include:\n\n### Routing\n\nRoutes define the URLs that users can access and the logic that handles incoming requests.\n\n### Dependency Injection\n\nDependencies allow reusable components such as database connections, authentication services, and configuration objects to be shared across the application.\n\n### Request Validation\n\nFastAPI automatically validates incoming request data using Pydantic models.\n\n### Lifecycle Management\n\nApplications can perform startup and shutdown tasks using lifespan events.\n\n### Security\n\nFastAPI includes built-in support for OAuth2, JWT authentication, API keys, and other security mechanisms.\n\n## Common Use Cases\n\nFastAPI is commonly used for:\n\n- REST APIs\n- AI and machine learning services\n- Retrieval-Augmented Generation (RAG) systems\n- Microservices\n- Internal enterprise platforms\n- Backend web applications\n- Data processing services\n\n## Benefits\n\nOrganizations choose FastAPI because it provides:\n\n- Fast development speed\n- High performance\n- Excellent documentation\n- Strong type safety\n- Easy testing\n- Scalability for production workloads\n\nFastAPI is one of the most popular modern Python frameworks for building reliable and maintainable APIs.",
+        "source": "fastapi/overview.md",
+        "score": 0.52752864
+      },
+      {
+        "id": 3,
+        "text": "# FastAPI Overview\n\nFastAPI is a modern, high-performance Python web framework for building APIs and backend services.\n\nIt is designed to be easy to learn, fast to develop with, and highly efficient in production environments. FastAPI is built on top of Starlette for web functionality and Pydantic for data validation.\n\nFastAPI is widely used for REST APIs, AI and machine learning services, microservices, enterprise applications, and backend web systems.\n\n## Key Features\n\nFastAPI provides several powerful features out of the box:\n\n- Automatic request validation using Pydantic\n- Dependency injection system\n- Automatic OpenAPI and Swagger documentation\n- Async and await support using ASGI\n- Type hint integration\n- High performance comparable to Node.js and Go services\n- Built-in security and authentication support\n\n## Why FastAPI Is Popular\n\nFastAPI reduces boilerplate code while maintaining strong type safety and excellent developer experience.\n\nDevelopers can build APIs quickly while benefiting from:\n\n- Automatic documentation\n- Automatic validation\n- Clear error messages\n- Modern Python features\n- High runtime performance\n\n## Basic Example\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Hello World\"}\n```\n\nIn this example, FastAPI creates a simple API endpoint that responds to HTTP GET requests.\n\n## Core Concepts\n\nSome of the most important FastAPI concepts include:\n\n### Routing",
+        "source": "fastapi/overview.md",
+        "score": 0.5685271
+      },
+      {
+        "id": 4,
+        "text": "# FastAPI Security\n\nSecurity is a critical aspect of API development. FastAPI provides built-in tools and integrations for implementing authentication, authorization, and access control.\n\nFastAPI supports modern security standards including OAuth2, JWT tokens, API keys, and HTTP authentication.\n\n## Authentication vs Authorization\n\nAuthentication verifies who a user is.\n\nAuthorization determines what a user is allowed to access.\n\nA secure API typically requires both authentication and authorization.\n\n## OAuth2 Authentication\n\nOAuth2 is one of the most common authentication mechanisms used in modern APIs.\n\nFastAPI provides utilities for implementing OAuth2 workflows.\n\n### Example\n\n```python\nfrom fastapi.security import OAuth2PasswordBearer\n\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n```\n\nThe `OAuth2PasswordBearer` dependency extracts access tokens from incoming requests.\n\n## Using Security Dependencies\n\nSecurity components are often injected using FastAPI's dependency injection system.\n\n### Example\n\n```python\nfrom fastapi import Depends\n\n@app.get(\"/profile\")\ndef get_profile(token: str = Depends(oauth2_scheme)):\n    return {\"token\": token}\n```\n\nFastAPI automatically validates and provides the authentication token.\n\n## API Key Authentication\n\nFastAPI also supports API key authentication.\n\nAPI keys are commonly used for:\n\n- Internal services\n- Third-party integrations\n- Service-to-service communication\n\n## JWT Tokens\n\nJSON Web Tokens (JWTs) are frequently used with OAuth2.\n\nJWT tokens typically contain:\n\n- User identity\n- Permissions\n- Expiration information",
+        "source": "fastapi/security.md",
+        "score": 0.5925947
+      }
+    ],
+    "trace_id": "e8bb5e65-b7b1-4b38-9da2-5fff2f20a940"
+  },
+  {
+    "question": "What is Pydantic used for?",
+    "expected_answer": "Pydantic is used for data validation and settings management using Python type annotations.",
+    "expected_source": "pydantic/models.md",
+    "generated_answer": "Pydantic is used for data validation and settings management using Python type hints. It ensures that data entering an application is validated, parsed, and converted into correct Python types automatically, which reduces runtime errors and manual parsing logic [0]. Additionally, Pydantic is employed in backend systems to enforce strict validation rules on untrusted or incorrectly formatted data before it enters application logic [0]. It also provides advanced features for complex data modeling, validation control, and performance optimization in production-grade applications [1]. Furthermore, Pydantic Settings is an extension used for managing application configuration through environment variables and `.env` files, helping to separate configuration from code [2].",
+    "citations": [
+      {
+        "index": 0,
+        "source": "pydantic/overview.md",
+        "score": 0.73670423
+      },
+      {
+        "index": 1,
+        "source": "pydantic/advanced.md",
+        "score": 0.6056168
+      },
+      {
+        "index": 2,
+        "source": "pydantic/settings.md",
+        "score": 0.537199
+      },
+      {
+        "index": 3,
+        "source": "pydantic/models.md",
+        "score": 0.59755075
+      },
+      {
+        "index": 4,
+        "source": "pydantic/validations.md",
+        "score": 0.5309504
+      }
+    ],
+    "contexts": [
+      {
+        "id": 0,
+        "text": "# Pydantic Overview\n\nPydantic is a Python library used for data validation and settings management using Python type hints.\n\nIt ensures that data entering an application is validated, parsed, and converted into correct Python types automatically, reducing runtime errors and manual parsing logic.\n\n---\n\n## Why Pydantic is Used\n\nIn backend systems, data coming from users or external APIs is often untrusted or incorrectly formatted.\n\nPydantic solves this by enforcing strict validation rules before data enters your application logic.",
+        "source": "pydantic/overview.md",
+        "score": 0.73670423
+      },
+      {
+        "id": 1,
+        "text": "# Pydantic Advanced\n\nPydantic Advanced features are used for complex data modeling, validation control, and performance optimization in production-grade Python applications.\n\nThese features help build scalable, maintainable, and highly structured backend systems.\n\n---\n\n## Model Configurations\n\nPydantic allows advanced control over model behavior using configuration settings.\n\n### Example:\n\n```python\nfrom pydantic import BaseModel\n\nclass User(BaseModel):\n    id: int\n    name: str\n\nclass Config:\n        extra = \"forbid\"\n        validate_assignment = True",
+        "source": "pydantic/advanced.md",
+        "score": 0.6056168
+      },
+      {
+        "id": 2,
+        "text": "# Pydantic Settings\n\nPydantic Settings is an extension of Pydantic used for managing application configuration using environment variables and `.env` files.\n\nIt is built on top of `BaseSettings` and is commonly used in production applications to separate configuration from code.\n\n## Why Pydantic Settings is Used\n\nIn real-world applications, configuration values such as:\n- API keys\n- database URLs\n- secrets\n- service endpoints\n\nshould not be hardcoded in code.\n\nPydantic Settings allows these values to be:\n- loaded from environment variables\n- loaded from `.env` files\n- overridden in different environments (dev, staging, production)\n\n---\n\n## BaseSettings\n\nThe core of Pydantic Settings is `BaseSettings`.\n\nAny class that inherits from `BaseSettings` automatically reads values from environment variables.\n\nExample:\n\n```python\nfrom pydantic_settings import BaseSettings\n\nclass Settings(BaseSettings):\n    app_name: str\n    debug: bool = False",
+        "source": "pydantic/settings.md",
+        "score": 0.537199
+      },
+      {
+        "id": 3,
+        "text": "# Pydantic Models\n\nPydantic models are Python classes used to define structured data schemas with type validation.\n\nThey are the core building blocks for data validation in FastAPI and other Python applications.\n\nEach model defines:\n- fields\n- types\n- optional validation rules\n\n## What is a Pydantic Model\n\nA Pydantic model is a class that inherits from `BaseModel`.\n\nIt automatically:\n- validates input data\n- converts compatible types\n- raises errors for invalid input\n\nExample:\n\n```python\nfrom pydantic import BaseModel\n\nclass User(BaseModel):\n    id: int\n    name: str\n    email: str",
+        "source": "pydantic/models.md",
+        "score": 0.59755075
+      },
+      {
+        "id": 4,
+        "text": "# Pydantic Validations\n\nPydantic validations are rules applied to data fields in Pydantic models to ensure input data meets expected constraints before being used in an application.\n\nThese validations run automatically when a model is instantiated.\n\n## Why Validations Matter\n\nIn real-world applications, input data is often:\n- incomplete\n- incorrectly typed\n- out of range\n- malformed\n\nPydantic validations help catch these issues early, before they reach business logic.\n\n---\n\n## Built-in Field Validations\n\nPydantic provides built-in validation constraints using `Field`.\n\n### Example:\n\n```python\nfrom pydantic import BaseModel, Field\n\nclass Product(BaseModel):\n    name: str = Field(..., min_length=3, max_length=50)\n    price: float = Field(..., gt=0)\n    quantity: int = Field(..., ge=1)",
+        "source": "pydantic/validations.md",
+        "score": 0.5309504
+      }
+    ],
+    "trace_id": "1b40f56d-a271-4991-a894-67eff5feb482"
+  },
+  {
+    "question": "What is a Docker container?",
+    "expected_answer": "A Docker container is a lightweight isolated environment for running applications.",
+    "expected_source": "docker/overview.md",
+    "generated_answer": "A Docker container is a lightweight, isolated runtime environment that runs an application. Containers share the host OS kernel, are faster than virtual machines, are portable across systems, and start in seconds [0].",
+    "citations": [
+      {
+        "index": 0,
+        "source": "docker/overview.md",
+        "score": 0.62036824
+      }
+    ],
+    "contexts": [
+      {
+        "id": 0,
+        "text": "# Docker Overview\n\nDocker is a platform used to build, package, and run applications in lightweight, isolated environments called containers.\n\nIt ensures that applications run consistently across different environments such as development, testing, and production.\n\n---\n\n## Why Docker is Used\n\nIn traditional development environments, applications often fail due to differences in:\n\n- operating system\n\n- dependencies\n\n- runtime versions\n\n- configuration\n\nDocker solves this by packaging everything required to run an application into a single container.\n\n---\n\n## Key Concepts\n\n### 1. Container\n\nA container is a lightweight, isolated runtime environment that runs an application.\n\nContainers:\n\n- share the host OS kernel\n\n- are faster than virtual machines\n\n- are portable across systems\n\n- start in seconds\n\n---\n\n### 2. Image\n\nA Docker image is a read-only template used to create containers.\n\nIt contains:\n\n- application code\n\n- runtime environment\n\n- system libraries\n\n- dependencies\n\nExample:\n\n```bash id=\"img1\"\n\ndocker build -t my-app .",
+        "source": "docker/overview.md",
+        "score": 0.62036824
+      }
+    ],
+    "trace_id": "31fa4c56-9320-4a34-8033-3029cef60673"
+  }
+]

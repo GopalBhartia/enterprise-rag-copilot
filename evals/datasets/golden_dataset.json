@@ -1,0 +1,22 @@
+[
+    {
+        "question": "What is FastAPI?",
+        "expected_answer": "FastAPI is a modern Python web framework for building APIs using type hints.",
+        "expected_source": "fastapi/overview.md"
+    },
+    {
+        "question": "What is dependency injection in FastAPI?",
+        "expected_answer": "Dependency injection allows FastAPI to automatically provide dependencies to path operations.",
+        "expected_source": "fastapi/dependencies.md"
+    },
+    {
+        "question": "What is Pydantic used for?",
+        "expected_answer": "Pydantic is used for data validation and settings management using Python type annotations.",
+        "expected_source": "pydantic/models.md"
+    },
+    {
+        "question": "What is a Docker container?",
+        "expected_answer": "A Docker container is a lightweight isolated environment for running applications.",
+        "expected_source": "docker/overview.md"
+    }
+]

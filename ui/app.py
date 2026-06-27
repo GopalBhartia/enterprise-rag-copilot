@@ -1,8 +1,15 @@
 import requests
 import streamlit as st
+import os
 
-API_URL = "http://backend:8000/rag/ask"
-FEEDBACK_URL = "http://backend:8000/feedback"
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "http://backend:8000",
+)
+
+API_URL = f"{BACKEND_URL}/rag/ask"
+
+FEEDBACK_URL = f"{BACKEND_URL}/feedback"
 
 st.set_page_config(
     page_title="Enterprise RAG Copilot",
